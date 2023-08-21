@@ -5,3 +5,10 @@ logging:
     se.david: DEBUG
 backendUrl: http://localhost:9080
 slKey: insert-some-key-here
+jerseyClient:
+  minThreads: 1
+  maxThreads: 128
+  workQueueSize: 8
+  gzipEnabled: true
+  gzipEnabledForRequests: true
+  chunkedEncodingEnabled: true

@@ -2,8 +2,11 @@ package se.david;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.dropwizard.client.JerseyClientConfiguration;
 import io.dropwizard.core.Configuration;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 public class TransportStopCounterServiceConfiguration extends Configuration
 {
@@ -12,6 +15,10 @@ public class TransportStopCounterServiceConfiguration extends Configuration
 
     @NotEmpty
     private String slKey;
+
+    @Valid
+    @NotNull
+    private JerseyClientConfiguration jerseyClient = new JerseyClientConfiguration();
 
     @JsonProperty
     public String getBackendUrl()
@@ -35,5 +42,17 @@ public class TransportStopCounterServiceConfiguration extends Configuration
     public void setSlKey(String slKey)
     {
         this.slKey = slKey;
+    }
+
+    @JsonProperty("jerseyClient")
+    public JerseyClientConfiguration getJerseyClientConfiguration()
+    {
+        return jerseyClient;
+    }
+
+    @JsonProperty("jerseyClient")
+    public void setJerseyClientConfiguration(JerseyClientConfiguration jerseyClientConfiguration)
+    {
+        this.jerseyClient = jerseyClientConfiguration;
     }
 }

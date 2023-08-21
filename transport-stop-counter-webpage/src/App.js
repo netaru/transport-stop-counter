@@ -2,13 +2,10 @@ import './App.css';
 
 import {useState} from 'react';
 
-import logo from './logo.svg';
-
 function App() {
     const [begin, setBegin] = useState(0);
     const [end, setEnd]     = useState(10);
     const [list, setList]   = useState("");
-	const [transports, setTransports] = useState([]);
 
     function handleClick() {
         const init = { method : 'GET' };

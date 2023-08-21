@@ -7,3 +7,7 @@ services:
     build: ./transport-stop-counter-service
     ports:
       - "8080:8080"
+  webapp:
+    build: ./transport-stop-counter-webpage
+    ports:
+      - "3000:3000"

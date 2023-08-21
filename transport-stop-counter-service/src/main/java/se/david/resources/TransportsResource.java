@@ -2,6 +2,7 @@ package se.david.resources;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import se.david.api.LineResponse;
 import se.david.api.TransportsResponse;
@@ -15,6 +16,7 @@ import com.codahale.metrics.annotation.Timed;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 
 @Path("/transports")
@@ -33,13 +35,17 @@ public class TransportsResource
 
     @GET
     @Timed
-    public TransportsResponse getTransports() throws Exception
+    public TransportsResponse getTransports(
+            @QueryParam("begin") Optional<Integer> begin,
+            @QueryParam("end") Optional<Integer>   end) throws Exception
     {
         Transports         transports = TransportsUtils.fetchTransportsFromSL(apiClient, slKey);
         List<LineResponse> lines      = new ArrayList<>();
         List<Line>         parsed     = transports.getTransports();
 
-        for (int i = 0; i < 10; ++i) { lines.add(new LineResponse(parsed.get(i), i)); }
+        int beginLimit = Integer.max(begin.orElse(0), 0);
+        int endLimit   = Integer.min(end.orElse(10), parsed.size());
+        for (int i = beginLimit; i < endLimit; ++i) { lines.add(new LineResponse(parsed.get(i), i)); }
         return new TransportsResponse(lines);
     }
 }

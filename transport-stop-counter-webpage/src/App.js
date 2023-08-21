@@ -14,30 +14,30 @@ function App() {
         fetch(myRequest)
                 .then(function(response) { return response.json(); })
                 .catch(function(err) { console.log("Error: " + err) })
-            .then(function(body) {
-                setList(body.lines.map(line =>
-                    <div key={line.index}>
-                        <table>
-                            <caption>
-                            index: {line.index}, {line.lineNumber} {line.transportCode}, Number of stops {line.stops.length}
-                            </caption>
-                            <tbody>
-                                <tr>
-                                    <th scope="col">StopId</th>
-                                    <th scope="col">StopName</th>
-                                    <th scope="col">StopArea</th>
-                                </tr>
-                                    {line.stops.map(stop =>
-										<tr key={stop.id}>
-											<th scope="row">{stop.id}</th>
-											<td>{stop.name}</td>
-											<td>{stop.areaNumber}</td>
-										</tr>
-                                    )}
-                            </tbody>
-                        </table>
-                    </div>
-                ))
+				.then(function(body) {
+					setList(body.lines.map(line =>
+						<div key={line.index}>
+							<table>
+								<caption>
+								index: {line.index}, {line.lineNumber} {line.transportCode}, Number of stops {line.stops.length}
+								</caption>
+								<tbody>
+									<tr>
+										<th scope="col">StopId</th>
+										<th scope="col">StopName</th>
+										<th scope="col">StopArea</th>
+									</tr>
+										{line.stops.map(stop =>
+											<tr key={stop.id}>
+												<th scope="row">{stop.id}</th>
+												<td>{stop.name}</td>
+												<td>{stop.areaNumber}</td>
+											</tr>
+										)}
+								</tbody>
+							</table>
+						</div>
+					))
             });
     }
 

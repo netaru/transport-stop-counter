@@ -1,21 +1,45 @@
 package se.david.resources;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import se.david.api.LineResponse;
+import se.david.api.TransportsResponse;
+import se.david.server.sl.ApiClient;
+import se.david.traffic.Line;
+import se.david.traffic.Transports;
+import se.david.traffic.TransportsUtils;
+
 import com.codahale.metrics.annotation.Timed;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import se.david.api.TransportsResponse;
 
 @Path("/transports")
 @Produces(MediaType.APPLICATION_JSON)
 public class TransportsResource
 {
+    private final ApiClient apiClient;
+
+    private final String slKey;
+
+    public TransportsResource(ApiClient apiClient, String slKey)
+    {
+        this.apiClient = apiClient;
+        this.slKey     = slKey;
+    }
+
     @GET
     @Timed
     public TransportsResponse getTransports() throws Exception
     {
-        return new TransportsResponse(null);
+        Transports         transports = TransportsUtils.fetchTransportsFromSL(apiClient, slKey);
+        List<LineResponse> lines      = new ArrayList<>();
+        List<Line>         parsed     = transports.getTransports();
+
+        for (int i = 0; i < 10; ++i) { lines.add(new LineResponse(parsed.get(i), i)); }
+        return new TransportsResponse(lines);
     }
 }

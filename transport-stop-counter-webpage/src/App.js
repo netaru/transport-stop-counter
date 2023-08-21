@@ -42,23 +42,25 @@ function App() {
 
     return (
     <div className="App">
-		<header className="App-header">
-			<h1>TransportToStopFrequencePage</h1>
-			<label>
-				Begin:{' '}
-			<input type="text" pattern="[0-9]*" value={begin} onChange={
-				e => setBegin(e.target.value)}/>
-			</label>
-			<label>
-				End:{' '}
-			<input type="text" pattern="[0-9]*" value={end} onChange={
-				e => setEnd(e.target.value)}/>
-			</label>
-			<button onClick={handleClick}>
-				Fetch transports
-			</button>
-			{list}
-		</header>
+        <header className="App-header">
+            <h1>TransportToStopFrequencePage</h1>
+            <div>
+            <label>
+                Begin
+            </label>
+            <input type="number" value={begin} onChange={
+                e => setBegin(e.target.value)}/>
+            <label>
+                End
+            </label>
+            <input type="number" value={end} onChange={
+                e => setEnd(e.target.value)}/>
+            <button onClick={handleClick}>
+                Fetch transports
+            </button>
+            </div>
+            {list}
+        </header>
     </div>
     );
     }

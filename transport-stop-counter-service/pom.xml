@@ -164,7 +164,7 @@
                         </goals>
                         <configuration>
                             <inputSpec>
-                                swagger-specification/sl-api-v2.json
+                                transport-stop-counter-service/swagger-specification/sl-api-v2.json
                             </inputSpec>
                             <generatorName>java</generatorName>
                             <library>jersey3</library>

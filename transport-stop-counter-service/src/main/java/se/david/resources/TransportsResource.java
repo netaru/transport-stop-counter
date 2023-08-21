@@ -12,6 +12,7 @@ import se.david.traffic.Transports;
 import se.david.traffic.TransportsUtils;
 
 import com.codahale.metrics.annotation.Timed;
+import com.google.common.cache.LoadingCache;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -25,12 +26,12 @@ public class TransportsResource
 {
     private final ApiClient apiClient;
 
-    private final String slKey;
+    private final LoadingCache<String, Transports> apiCacheSL;
 
     public TransportsResource(ApiClient apiClient, String slKey)
     {
-        this.apiClient = apiClient;
-        this.slKey     = slKey;
+        this.apiClient  = apiClient;
+        this.apiCacheSL = TransportsUtils.createSLCache(apiClient, slKey);
     }
 
     @GET
@@ -39,7 +40,7 @@ public class TransportsResource
             @QueryParam("begin") Optional<Integer> begin,
             @QueryParam("end") Optional<Integer>   end) throws Exception
     {
-        Transports         transports = TransportsUtils.fetchTransportsFromSL(apiClient, slKey);
+        Transports         transports = apiCacheSL.get(apiClient.getBasePath());
         List<LineResponse> lines      = new ArrayList<>();
         List<Line>         parsed     = transports.getTransports();
 

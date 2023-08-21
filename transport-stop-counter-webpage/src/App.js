@@ -25,7 +25,7 @@ function App() {
                                 <tr>
                                     <th scope="col">StopId</th>
                                     <th scope="col">StopName</th>
-                                    <th scope="col">StopAre</th>
+                                    <th scope="col">StopArea</th>
                                 </tr>
                                     {line.stops.map(stop =>
 										<tr key={stop.id}>

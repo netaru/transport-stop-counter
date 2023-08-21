@@ -1,0 +1,2 @@
+# Test Transports endpoint
+GET http://localhost:8080/transports

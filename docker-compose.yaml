@@ -3,3 +3,7 @@ services:
     build: ./sl-linedata-mock
     ports:
       - "9080:80"
+  service:
+    build: ./transport-stop-counter-service
+    ports:
+      - "8080:8080"

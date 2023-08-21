@@ -3,7 +3,7 @@ logging:
   level: INFO
   loggers:
     se.david: DEBUG
-backendUrl: http://localhost:9080
+backendUrl: http://mock
 slKey: insert-some-key-here
 jerseyClient:
   minThreads: 1

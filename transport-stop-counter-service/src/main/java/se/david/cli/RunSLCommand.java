@@ -1,9 +1,11 @@
 package se.david.cli;
 
+import java.util.List;
+
 import se.david.server.sl.ApiClient;
-import se.david.server.sl.ApiException;
 import se.david.server.sl.Configuration;
-import se.david.server.sl.api.HallplatserOchLinjerApi;
+import se.david.traffic.Line;
+import se.david.traffic.TransportsUtils;
 
 import io.dropwizard.client.JerseyClientBuilder;
 import io.dropwizard.client.JerseyClientConfiguration;
@@ -35,15 +37,9 @@ public class RunSLCommand extends Command
         Client                    httpClient = new JerseyClientBuilder(env).using(config).build(getName());
         client.setHttpClient(httpClient);
 
-        HallplatserOchLinjerApi api = new HallplatserOchLinjerApi(client);
-        try
-        {
-            var response = api.lineDataJsonmodeljourGet(namespace.getString("key"));
-            System.out.println(response.toString());
-        }
-        catch (ApiException e)
-        {
-            System.out.println(e.getMessage());
-        }
+        List<Line> transports =
+                TransportsUtils.fetchTransportsFromSL(client, namespace.getString("key")).getTransports();
+        System.out.println("Transports size: " + transports.size());
+        for (int i = 0; i < 10; ++i) { System.out.println(transports.get(i)); }
     }
 }

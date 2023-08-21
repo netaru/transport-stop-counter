@@ -821,52 +821,50 @@
     "HallplatserOchLinjerSiteResponse": {
       "type": "object",
       "properties": {
-        "statusCode": {
+        "StatusCode": {
           "type": "integer",
           "format": "int32",
           "example": 0,
           "description": "Innehåller statuskod för det eventuella meddelandet."
         },
-        "message": {
+        "Message": {
           "type": "string",
           "description": "Innehåller eventuellt anropsrelaterade meddelanden som t.ex. felmeddelanden. Se ”Felmeddelanden” nedan."
         },
-        "executionTime": {
+        "ExecutionTime": {
           "type": "number",
           "format": "double",
           "example": 1,
           "description": "Anger hur lång tid (i ms) det tog för servern att generera svaret."
         },
-        "responseData": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/HallplatserOchLinjerSiteResponseData"
-          }
+        "ResponseData": {
+          "type": "object",
+          "$ref": "#/definitions/HallplatserOchLinjerSiteResponseData"
         }
       }
     },
     "HallplatserOchLinjerSiteResponseData": {
       "type": "object",
       "properties": {
-        "version": {
+        "Version": {
           "type": "string",
-          "format": "date-time",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})/",
           "example": "2016-11-18 00:18",
           "description": "Senast ändrad. Uppdateras normalt sett bara en gång per dygn"
         },
-        "type": {
+        "Type": {
           "type": "string",
           "enum": [
-            "site",
-            "stopPoint",
-            "line",
-            "journeyPatternPointOfLine",
-            "transportMode"
+            "Site",
+            "StopPoint",
+            "Line",
+            "JourneyPatternPointOfLine",
+            "TransportMode"
           ],
-          "example": "site",
+          "example": "Site",
           "description": "Anger typen av datamodellen som svaret innehåller; Site, StopPoint, Line, JourneyPatternPointOfLine, TransportMode"
         },
-        "result": {
+        "Result": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/HallplatserOchLinjerSite"
@@ -877,32 +875,30 @@
     "HallplatserOchLinjerSite": {
       "type": "object",
       "properties": {
-        "siteId": {
-          "type": "integer",
-          "format": "int32",
-          "example": 1002,
+        "SiteId": {
+          "type": "string",
+          "example": "1002",
           "description": "Unikt identifikationsnummer för en Site"
         },
-        "siteName": {
+        "SiteName": {
           "type": "string",
           "example": "Centralen",
           "description": "Benämning på området"
         },
-        "stopAreaNumber": {
-          "type": "integer",
-          "format": "int32",
-          "example": 1051,
+        "StopAreaNumber": {
+          "type": "string",
+          "example": "1051",
           "description": "Unikt identifikationsnummer för hållplats"
         },
-        "lastModifiedUtcDateTime": {
+        "LastModifiedUtcDateTime": {
           "type": "string",
-          "format": "date-time",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
           "example": "2014-06-27T14:03:39.103Z",
           "description": "Senast ändrad"
         },
-        "existsFromDate": {
+        "ExistsFromDate": {
           "type": "string",
-          "format": "date-time",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
           "example": "2014-06-28T00:00:00.000Z",
           "description": "Gäller fr.o.m. datum"
         }
@@ -911,52 +907,50 @@
     "HallplatserOchLinjerStopPointResponse": {
       "type": "object",
       "properties": {
-        "statusCode": {
+        "StatusCode": {
           "type": "integer",
           "format": "int32",
           "example": 0,
           "description": "Innehåller statuskod för det eventuella meddelandet."
         },
-        "message": {
+        "Message": {
           "type": "string",
           "description": "Innehåller eventuellt anropsrelaterade meddelanden som t.ex. felmeddelanden. Se ”Felmeddelanden” nedan."
         },
-        "executionTime": {
+        "ExecutionTime": {
           "type": "number",
           "format": "double",
           "example": 1,
           "description": "Anger hur lång tid (i ms) det tog för servern att generera svaret."
         },
-        "responseData": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/HallplatserOchLinjerStopPointResponseData"
-          }
+        "ResponseData": {
+          "type": "object",
+          "$ref": "#/definitions/HallplatserOchLinjerStopPointResponseData"
         }
       }
     },
     "HallplatserOchLinjerStopPointResponseData": {
       "type": "object",
       "properties": {
-        "version": {
+        "Version": {
           "type": "string",
-          "format": "date-time",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})/",
           "example": "2016-11-18 00:18",
           "description": "Senast ändrad. Uppdateras normalt sett bara en gång per dygn"
         },
-        "type": {
+        "Type": {
           "type": "string",
           "enum": [
-            "site",
-            "stopPoint",
-            "line",
-            "journeyPatternPointOfLine",
-            "transportMode"
+            "Site",
+            "StopPoint",
+            "Line",
+            "JourneyPatternPointOfLine",
+            "TransportMode"
           ],
-          "example": "stopPoint",
+          "example": "StopPoint",
           "description": "Anger typen av datamodellen som svaret innehåller; Site, StopPoint, Line, JourneyPatternPointOfLine, TransportMode"
         },
-        "result": {
+        "Result": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/HallplatserOchLinjerStopPoint"
@@ -967,33 +961,29 @@
     "HallplatserOchLinjerStopPoint": {
       "type": "object",
       "properties": {
-        "stopPointNumber": {
-          "type": "integer",
-          "format": "int32",
-          "example": 1051,
+        "StopPointNumber": {
+          "type": "string",
+          "example": "1051",
           "description": "Unikt identifikationsnummer för stoppställe"
         },
-        "stopPointName": {
+        "StopPointName": {
           "type": "string",
           "example": "T-Centralen",
           "description": "Namn på stoppställe"
         },
-        "stopAreaNumber": {
-          "type": "integer",
-          "format": "int32",
-          "example": 1051,
+        "StopAreaNumber": {
+          "type": "string",
+          "example": "1051",
           "description": "Number för StopArea\n\nEtt stoppställe ingår endast i en StopArea\n"
         },
         "LocationNorthingCoordinate": {
-          "type": "number",
-          "format": "double",
-          "example": 59.3313179695028,
+          "type": "string",
+          "example": "59.3313179695028",
           "description": "Koordinat i WGS84-format"
         },
         "LocationEastingCoordinate": {
-          "type": "number",
-          "format": "double",
-          "example": 18.0616773959365,
+          "type": "string",
+          "example": "18.0616773959365",
           "description": "Koordinat i WGS84-format"
         },
         "ZoneShortName": {
@@ -1010,19 +1000,20 @@
             "TRAMSTN",
             "RAILWSTN",
             "SHIPBER",
-            "FERRYBER"
+            "FERRYBER",
+			"UNKNOWN"
           ],
           "description": "Användning av hållplatsen. BUSSTERM, TRAMSTN, METROSTN, RAILWSTN, SHIPBER eller FERRYBER"
         },
-        "lastModifiedUtcDateTime": {
+        "LastModifiedUtcDateTime": {
           "type": "string",
-          "format": "date-time",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
           "example": "2014-06-03T00:00:00.000Z",
           "description": "Senast ändrad"
         },
-        "existsFromDate": {
+        "ExistsFromDate": {
           "type": "string",
-          "format": "date-time",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
           "example": "2014-06-03T00:00:00.000Z",
           "description": "Gäller fr.o.m. datum"
         }
@@ -1031,52 +1022,50 @@
     "HallplatserOchLinjerLineResponse": {
       "type": "object",
       "properties": {
-        "statusCode": {
+        "StatusCode": {
           "type": "integer",
           "format": "int32",
           "example": 0,
           "description": "Innehåller statuskod för det eventuella meddelandet."
         },
-        "message": {
+        "Message": {
           "type": "string",
           "description": "Innehåller eventuellt anropsrelaterade meddelanden som t.ex. felmeddelanden. Se ”Felmeddelanden” nedan."
         },
-        "executionTime": {
+        "ExecutionTime": {
           "type": "number",
           "format": "double",
           "example": 1,
           "description": "Anger hur lång tid (i ms) det tog för servern att generera svaret."
         },
-        "responseData": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/HallplatserOchLinjerLineResponseData"
-          }
+        "ResponseData": {
+          "type": "object",
+          "$ref": "#/definitions/HallplatserOchLinjerLineResponseData"
         }
       }
     },
     "HallplatserOchLinjerLineResponseData": {
       "type": "object",
       "properties": {
-        "version": {
+        "Version": {
           "type": "string",
-          "format": "date-time",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})/",
           "example": "2016-11-18 00:18",
           "description": "Senast ändrad. Uppdateras normalt sett bara en gång per dygn"
         },
-        "type": {
+        "Type": {
           "type": "string",
           "enum": [
-            "site",
-            "stopPoint",
-            "line",
-            "journeyPatternPointOfLine",
-            "transportMode"
+            "Site",
+            "StopPoint",
+            "Line",
+            "JourneyPatternPointOfLine",
+            "TransportMode"
           ],
-          "example": "line",
+          "example": "Line",
           "description": "Anger typen av datamodellen som svaret innehåller; Site, StopPoint, Line, JourneyPatternPointOfLine, TransportMode"
         },
-        "result": {
+        "Result": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/HallplatserOchLinjerLine"
@@ -1087,187 +1076,22 @@
     "HallplatserOchLinjerLine": {
       "type": "object",
       "properties": {
-        "siteId": {
-          "type": "integer",
-          "format": "int32",
-          "example": 1002,
+        "LineNumber": {
+          "type": "string",
+          "example": "1002",
           "description": "Unikt identifikationsnummer för en Site"
         },
-        "siteName": {
+        "LineDesignation": {
           "type": "string",
-          "example": "Centralen",
+          "example": "1",
           "description": "Benämning på området"
         },
-        "stopAreaNumber": {
-          "type": "integer",
-          "format": "int32",
-          "example": 1051,
-          "description": "Unikt identifikationsnummer för hållplats"
-        },
-        "lastModifiedUtcDateTime": {
+        "DefaultTransportMode": {
           "type": "string",
-          "format": "date-time",
-          "example": "2014-06-27T14:03:39.103Z",
-          "description": "Senast ändrad"
+          "example": "Waxholmsbolagets",
+          "description": "Unik kod för företag"
         },
-        "existsFromDate": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2014-06-28T00:00:00.000Z",
-          "description": "Gäller fr.o.m. datum"
-        }
-      }
-    },
-    "HallplatserOchLinjerJourneyPatternPointOnLineResponse": {
-      "type": "object",
-      "properties": {
-        "statusCode": {
-          "type": "integer",
-          "format": "int32",
-          "example": 0,
-          "description": "Innehåller statuskod för det eventuella meddelandet."
-        },
-        "message": {
-          "type": "string",
-          "description": "Innehåller eventuellt anropsrelaterade meddelanden som t.ex. felmeddelanden. Se ”Felmeddelanden” nedan."
-        },
-        "executionTime": {
-          "type": "number",
-          "format": "double",
-          "example": 1,
-          "description": "Anger hur lång tid (i ms) det tog för servern att generera svaret."
-        },
-        "responseData": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/HallplatserOchLinjerJourneyPatternPointOnLineResponseData"
-          }
-        }
-      }
-    },
-    "HallplatserOchLinjerJourneyPatternPointOnLineResponseData": {
-      "type": "object",
-      "properties": {
-        "version": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2016-11-18 00:18",
-          "description": "Senast ändrad. Uppdateras normalt sett bara en gång per dygn"
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "site",
-            "stopPoint",
-            "line",
-            "journeyPatternPointOfLine",
-            "transportMode"
-          ],
-          "example": "journeyPatternPointOfLine",
-          "description": "Anger typen av datamodellen som svaret innehåller; Site, StopPoint, Line, JourneyPatternPointOfLine, TransportMode"
-        },
-        "result": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/HallplatserOchLinjerJourneyPatternPointOnLine"
-          }
-        }
-      }
-    },
-    "HallplatserOchLinjerJourneyPatternPointOnLine": {
-      "type": "object",
-      "properties": {
-        "siteId": {
-          "type": "integer",
-          "format": "int32",
-          "example": 1002,
-          "description": "Unikt identifikationsnummer för en Site"
-        },
-        "siteName": {
-          "type": "string",
-          "example": "Centralen",
-          "description": "Benämning på området"
-        },
-        "stopAreaNumber": {
-          "type": "integer",
-          "format": "int32",
-          "example": 1051,
-          "description": "Unikt identifikationsnummer för hållplats"
-        },
-        "lastModifiedUtcDateTime": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2014-06-27T14:03:39.103Z",
-          "description": "Senast ändrad"
-        },
-        "existsFromDate": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2014-06-28T00:00:00.000Z",
-          "description": "Gäller fr.o.m. datum"
-        }
-      }
-    },
-    "HallplatserOchLinjerTransportModeResponse": {
-      "type": "object",
-      "properties": {
-        "statusCode": {
-          "type": "integer",
-          "format": "int32",
-          "example": 0,
-          "description": "Innehåller statuskod för det eventuella meddelandet."
-        },
-        "message": {
-          "type": "string",
-          "description": "Innehåller eventuellt anropsrelaterade meddelanden som t.ex. felmeddelanden. Se ”Felmeddelanden” nedan."
-        },
-        "executionTime": {
-          "type": "number",
-          "format": "double",
-          "example": 1,
-          "description": "Anger hur lång tid (i ms) det tog för servern att generera svaret."
-        },
-        "responseData": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/HallplatserOchLinjerTransportModeResponseData"
-          }
-        }
-      }
-    },
-    "HallplatserOchLinjerTransportModeResponseData": {
-      "type": "object",
-      "properties": {
-        "version": {
-          "type": "string",
-          "format": "date-time",
-          "example": "2016-11-18 00:18",
-          "description": "Senast ändrad. Uppdateras normalt sett bara en gång per dygn"
-        },
-        "type": {
-          "type": "string",
-          "enum": [
-            "site",
-            "stopPoint",
-            "line",
-            "journeyPatternPointOfLine",
-            "transportMode"
-          ],
-          "example": "transportMode",
-          "description": "Anger typen av datamodellen som svaret innehåller; Site, StopPoint, Line, JourneyPatternPointOfLine, TransportMode"
-        },
-        "result": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/HallplatserOchLinjerTransportMode"
-          }
-        }
-      }
-    },
-    "HallplatserOchLinjerTransportMode": {
-      "type": "object",
-      "properties": {
-        "defaultTransportModeCode": {
+        "DefaultTransportModeCode": {
           "type": "string",
           "example": "BUS",
           "enum": [
@@ -1280,12 +1104,182 @@
           ],
           "description": "Unik kod för trafikslag"
         },
-        "defaultTransportMode": {
+        "LastModifiedUtcDateTime": {
+          "type": "string",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
+          "example": "2014-06-27T14:03:39.103Z",
+          "description": "Senast ändrad"
+        },
+        "ExistsFromDate": {
+          "type": "string",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
+          "example": "2014-06-28T00:00:00.000Z",
+          "description": "Gäller fr.o.m. datum"
+        }
+      }
+    },
+    "HallplatserOchLinjerJourneyPatternPointOnLineResponse": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": 0,
+          "description": "Innehåller statuskod för det eventuella meddelandet."
+        },
+        "Message": {
+          "type": "string",
+          "description": "Innehåller eventuellt anropsrelaterade meddelanden som t.ex. felmeddelanden. Se ”Felmeddelanden” nedan."
+        },
+        "ExecutionTime": {
+          "type": "number",
+          "format": "double",
+          "example": 1,
+          "description": "Anger hur lång tid (i ms) det tog för servern att generera svaret."
+        },
+        "ResponseData": {
+          "type": "object",
+          "$ref": "#/definitions/HallplatserOchLinjerJourneyPatternPointOnLineResponseData"
+        }
+      }
+    },
+    "HallplatserOchLinjerJourneyPatternPointOnLineResponseData": {
+      "type": "object",
+      "properties": {
+        "Version": {
+          "type": "string",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})/",
+          "example": "2016-11-18 00:18",
+          "description": "Senast ändrad. Uppdateras normalt sett bara en gång per dygn"
+        },
+        "Type": {
+          "type": "string",
+          "enum": [
+            "Site",
+            "StopPoint",
+            "Line",
+            "JourneyPatternPointOnLine",
+            "TransportMode"
+          ],
+          "example": "JourneyPatternPointOfLine",
+          "description": "Anger typen av datamodellen som svaret innehåller; Site, StopPoint, Line, JourneyPatternPointOfLine, TransportMode"
+        },
+        "Result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HallplatserOchLinjerJourneyPatternPointOnLine"
+          }
+        }
+      }
+    },
+    "HallplatserOchLinjerJourneyPatternPointOnLine": {
+      "type": "object",
+      "properties": {
+        "LineNumber": {
+          "type": "string",
+          "example": "1002",
+          "description": "Unikt identifikationsnummer för en Linje(Eller inte)"
+        },
+        "DirectionCode": {
+          "type": "string",
+          "example": "1",
+          "description": "Riktningsinformation."
+        },
+        "JourneyPatternPointNumber": {
+          "type": "string",
+          "example": "1051",
+          "description": "Unikt identifikationsnummer för hållplats"
+        },
+        "LastModifiedUtcDateTime": {
+          "type": "string",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
+          "example": "2014-06-27T14:03:39.103Z",
+          "description": "Senast ändrad"
+        },
+        "ExistsFromDate": {
+          "type": "string",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
+          "example": "2014-06-28T00:00:00.000Z",
+          "description": "Gäller fr.o.m. datum"
+        }
+      }
+    },
+    "HallplatserOchLinjerTransportModeResponse": {
+      "type": "object",
+      "properties": {
+        "StatusCode": {
+          "type": "integer",
+          "format": "int32",
+          "example": 0,
+          "description": "Innehåller statuskod för det eventuella meddelandet."
+        },
+        "Message": {
+          "type": "string",
+          "description": "Innehåller eventuellt anropsrelaterade meddelanden som t.ex. felmeddelanden. Se ”Felmeddelanden” nedan."
+        },
+        "ExecutionTime": {
+          "type": "number",
+          "format": "double",
+          "example": 1,
+          "description": "Anger hur lång tid (i ms) det tog för servern att generera svaret."
+        },
+        "ResponseData": {
+          "type": "object",
+          "$ref": "#/definitions/HallplatserOchLinjerTransportModeResponseData"
+        }
+      }
+    },
+    "HallplatserOchLinjerTransportModeResponseData": {
+      "type": "object",
+      "properties": {
+        "Version": {
+          "type": "string",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})/",
+          "example": "2016-11-18 00:18",
+          "description": "Senast ändrad. Uppdateras normalt sett bara en gång per dygn"
+        },
+        "Type": {
+          "type": "string",
+          "enum": [
+            "Site",
+            "StopPoint",
+            "Line",
+            "JourneyPatternPointOfLine",
+            "TransportMode"
+          ],
+          "example": "TransportMode",
+          "description": "Anger typen av datamodellen som svaret innehåller; Site, StopPoint, Line, JourneyPatternPointOfLine, TransportMode"
+        },
+        "Result": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HallplatserOchLinjerTransportMode"
+          }
+        }
+      }
+    },
+    "HallplatserOchLinjerTransportMode": {
+      "type": "object",
+      "properties": {
+        "DefaultTransportModeCode": {
+          "type": "string",
+          "example": "BUS",
+          "enum": [
+            "BUS",
+            "METRO",
+            "TRAM",
+            "TRAIN",
+            "SHIP",
+            "FERRY"
+          ],
+          "description": "Unik kod för trafikslag"
+        },
+        "DefaultTransportMode": {
           "type": "string",
           "example": "buss",
           "description": "Benämning på trafikslag"
         },
-        "stopAreaTypeCode": {
+        "StopAreaTypeCode": {
           "type": "string",
           "example": "BUSTERM",
           "enum": [
@@ -1298,15 +1292,15 @@
           ],
           "description": "Typkod för hållplatsen"
         },
-        "lastModifiedUtcDateTime": {
+        "LastModifiedUtcDateTime": {
           "type": "string",
-          "format": "date-time",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
           "example": "2007-08-24T00:00:00.000Z",
           "description": "Senast ändrad"
         },
-        "existsFromDate": {
+        "ExistsFromDate": {
           "type": "string",
-          "format": "date-time",
+          "pattern": "/([0-9]{4})-(?:[0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).([0-9]{3})/",
           "example": "2007-08-24T00:00:00.000Z",
           "description": "Gäller fr.o.m. datum"
         }

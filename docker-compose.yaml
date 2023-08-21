@@ -1,0 +1,5 @@
+services:
+  mock:
+    build: ./sl-linedata-mock
+    ports:
+      - "9080:80"

@@ -3,6 +3,7 @@ package se.david;
 import java.util.EnumSet;
 
 import se.david.cli.RunSLCommand;
+import se.david.health.TransportsHealthCheck;
 import se.david.resources.TransportsResource;
 import se.david.server.sl.ApiClient;
 import se.david.server.sl.Configuration;
@@ -50,6 +51,9 @@ public class TransportStopCounterServiceApplication extends Application<Transpor
 
         TransportsResource resource = new TransportsResource(apiClient, configuration.getSlKey());
         environment.jersey().register(resource);
+
+        TransportsHealthCheck healthCheck = new TransportsHealthCheck(resource);
+        environment.healthChecks().register("transports", healthCheck);
 
         FilterRegistration.Dynamic cors = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
         cors.setInitParameter("allowedOrigins", "*");

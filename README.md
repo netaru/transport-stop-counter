@@ -67,11 +67,11 @@ npm start
 The web application should now be available on port 3000.
 
 ### Requirements
-Apache Maven(3.9.3 tested)
-Java 11(OpenJDK Runtime Environment build 20.0.2+9 tested)
-nodejs (v20.5.1 tested)
-npm (9.8.0 tested)
-nginx (nginx/1.25.2 tested)
+* Apache Maven(3.9.3 tested)
+* Java 11(OpenJDK Runtime Environment build 20.0.2+9 tested)
+* nodejs (v20.5.1 tested)
+* npm (9.8.0 tested)
+* nginx (nginx/1.25.2 tested)
 
 
 ## Stopping the services
